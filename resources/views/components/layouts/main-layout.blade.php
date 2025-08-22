@@ -13,7 +13,7 @@
       <hr>
       @auth
          <p><span class="text-info me-3">{{ Auth::user->username }}</span>
-          <a href="#"></a>
+          <a href="{{route('logout')}}"> Logout </a>
          </p>
         @else 
           <p class="opcacity-75">Nenhum usuario logado</p>

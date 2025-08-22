@@ -17,5 +17,55 @@ PERMISSAO: ele tem acesso ao caixa, mas ele não tem acesso ao relatórios geren
 Nesse caso eu vou usar o sqliite como exemplo, o vscode tem um plugn chamado  SQLite Viewer
 que permite que eu veja os conteudo da base de dados como se fosse um sgbd
 
+O comando abaixo faz duas coisas 
+1 - roda a migration pra construirr as tabelas
+2 - executa o seed para colocar usuarios nela  
+
+A base sqlite para que la funcione não basta so colocar as configurações 
+simplesmenete com o nome do banco, o caminho ddo aqqrqquivo fisico tem que ser indicado 
+no .env dessa forma 
+
+DB_CONNECTION=sqlite
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=database/database.sqlite
+DB_USERNAME=root
+DB_PASSWORD=
+
+depois de conferir a configuração ai eu posso executar o script abaixo 
+
+
 php artisan migrate:refresh --seed
- 
+
+criando o controler auth que vai conteter os metodos login e logout
+
+php artisan make:controller AuthController
+
+AuthController 
+--------------------------------------------------------------------
+class AuthController extends Controller
+{
+    public function login():RedirectResponse
+    {
+       $user = User::find(1);
+       Auth::login($user);
+       return redirect()->route('home');
+    }
+
+    
+    public function logout():RedirectResponse
+    {
+       $user = User::find(1);
+       Auth::logout();
+       return redirect()->route('home');
+    }
+
+       
+}
+----------------------------------------------------------------
+Rotas
+
+---------------------------------------------------------------------
+
+
+----------------------------------------------------------------------
