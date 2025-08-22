@@ -17,6 +17,17 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+
+            // adicionando colunas
+
+            $table->string('role')->default('admin');
+            $table->string('permissions')->default('admin');
+            
+            
+            
+
+
+
             $table->rememberToken();
             $table->timestamps();
         });

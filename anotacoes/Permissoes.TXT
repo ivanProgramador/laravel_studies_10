@@ -1,0 +1,21 @@
+O conceito de politicas de permissão é comum na maioria dos sistemas,, as permissões podem  definir  
+um parte importante nas regras de negócio, porque elas conseguem deixar mais claro o funcionamento da 
+organização da operação.
+conceitos que devem estar bem claros
+
+Autenticação 
+  Autenticar ,saber quem é eo usuario que cargo ele ocupa, quando foi cadastrado.
+Permissão
+  Definir oque ele pode acessar ou não dentro do sistema.
+
+exemplo:
+
+AUTENTICAÇÃO: Um caixa cadastrado eu sei quem ele é e qual e a função dele
+
+PERMISSAO: ele tem acesso ao caixa, mas ele não tem acesso ao relatórios gerenciais 
+
+Nesse caso eu vou usar o sqliite como exemplo, o vscode tem um plugn chamado  SQLite Viewer
+que permite que eu veja os conteudo da base de dados como se fosse um sgbd
+
+php artisan migrate:refresh --seed
+ 
