@@ -42,6 +42,40 @@ public function onlyAdmin(){
   }
 
 ----------------------------------------------------------------------------------------
+As gates tam bem podem ser usada para cultar recursos  dependendo do usuario por exemplo 
+pode ter botões ou paragrafos qua aparecem somente para os administradores ou para os dois 
+usando dirretivas do blade integradas com as gates.
+
+@can('user_is_admin') 
+  <p>somente admienistradores podem ver 
+@endcan
+
+@can('user_is_user') 
+  <p>somente usuarios comuns podem ver 
+@endcan
+
+@can('user_is_admin') 
+    <p>somente admienistradores podem ver<p>
+  @else 
+     <p> outra menagem caso não seja 
+@endcan
+
+
+@cannot('user_is_user')
+   <p> se for usuario comum não pode ver 
+@endcannot
+
+@canany(['user_is_admin','user_is_user'])
+  <p>usuarios e administradores podem ver, mas se tiver uma gate que não esteja no array 
+     naõ vai aparecer..<p>    
+  
+@endcanany
+
+
+
+
+
+
 
 
 
