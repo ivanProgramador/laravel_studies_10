@@ -12,7 +12,7 @@ class AuthController extends Controller
 {
     public function login():RedirectResponse
     {
-     $user = User::find(1);
+     $user = User::find(2);
 
     if (!$user) {
         return redirect()->route('login')->withErrors(['Usuário com ID 1 não encontrado.']);
@@ -54,13 +54,15 @@ class AuthController extends Controller
          } else {
           echo 'Voce não é um administrador.';
          }
-    
-
-      
-    
-
-
-
        
   }
+
+  public function onlyUser(){
+         if(Gate::allows('user_is_user')){
+           echo 'Você é um usuario comum, bem-vindo!';
+         } else {
+          echo 'Voce não é um admin.';
+         }
+    
+ }
 }
