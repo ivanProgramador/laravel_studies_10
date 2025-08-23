@@ -3,6 +3,10 @@
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/','home')->name('home');
+Route::view('/','home')->name('home');
 Route::get('/login',[AuthController::class,'login'])->name('login');
-Route::post('/logout',[AuthController::class,'logout'])->name('logout');
+Route::get('/logout',[AuthController::class,'logout'])->name('logout');
+Route::get('/only_admin',[AuthController::class,'onlyAdmin'])->name('only_admin');
+
+
+

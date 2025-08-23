@@ -1,0 +1,49 @@
+Uma Gate é uma função anonima que recebe alguns parametros e retorna um valor verdadeiro ou falso,
+ela deve ser criada dentro do arquivo "AppServiceProvider" dentro da função boot.
+
+  public function boot(): void
+    {
+        //Gates
+
+        //testando se o role do usuario é admin
+
+        Gate::define('user_is_admin', function (User $user) {
+
+            return $user->role === 'admin';
+
+        });
+
+
+    }
+------------------------------------------------------------------------
+depois de criar uma gate eu posso usar o retono dela para permitir ou negar o acesso 
+do usuario a um determinado recurso ou pagina, no caso abaixo eu faço isso com uma frase 
+
+------------------------------------------------------------------------------------------
+
+public function onlyAdmin(){
+
+        //usando a gate para verificar se o usuario é admin
+
+      if (!Gate::allows('user_is_admin')) {
+
+         //se não for admin
+
+          echo 'Voce não é um administrador.';
+
+      } else {
+
+            //se for admin
+          echo 'Você é um administrador, bem-vindo!';
+          
+      }
+
+       
+  }
+
+----------------------------------------------------------------------------------------
+
+
+
+
+

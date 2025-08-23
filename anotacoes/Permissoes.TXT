@@ -66,6 +66,17 @@ class AuthController extends Controller
 Rotas
 
 ---------------------------------------------------------------------
+Route::view('/','home')->name('home');
+Route::get('/login',[AuthController::class,'login'])->name('login');
+Route::get('/logout',[AuthController::class,'logout'])->name('logout');
 
 
 ----------------------------------------------------------------------
+
+No caso como o meu objetivo seria somente entender o funccionamento dos gates então 
+um click na rota de login ja seleciona o usuario e executa o login dele ee o logou com um 
+click desfaz o login do usuario.
+
+---------------------------------------------------------------------------------------------------
+
+

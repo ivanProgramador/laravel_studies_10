@@ -12,7 +12,7 @@
       <p class="display-6">Laravel Gates</p>
       <hr>
       @auth
-         <p><span class="text-info me-3">{{ Auth::user->username }}</span>
+         <p><span class="text-info me-3">{{ Auth::user()->name }}</span>
           <a href="{{route('logout')}}"> Logout </a>
          </p>
         @else 
