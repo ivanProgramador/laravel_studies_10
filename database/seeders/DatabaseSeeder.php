@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'user@example.com',
             'password'=>bcrypt('Aa123456'),
             'role'=>'admin',
-            'permissions'=>'admin'
+            'permissions'=>'["insert","delete"]'
         ]);
 
          User::factory()->create([
@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'userC@example.com',
             'password'=>bcrypt('Aa123456'),
             'role'=>'user',
-            'permissions'=>'user'
+            'permissions'=>'["insert"]'
         ]);
     }
 }

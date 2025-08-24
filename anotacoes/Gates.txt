@@ -70,6 +70,43 @@ usando dirretivas do blade integradas com as gates.
      naõ vai aparecer..<p>    
   
 @endcanany
+------------------------------------------------------------
+eu posso usar coleções de permissões no exemplo abaixo ao inves de 
+informar nas permissions qque o meu usuario possui epnas o nivel user
+de permisões eu posso colocar um array dizendo oque ele pode ou não 
+fazer dentro do sistema, no caso do meu usuario ele pode deletar e 
+inserir dados, eu posso fazer uma logica onde as gates leian essa lista 
+de permissões e liberem ou não acesso a recursos do sistema com base nessa lista      
+
+'permissions'=>['insert','delete']
+
+  User::factory()->create([
+            'name' => 'Usuario comum',
+            'email' => 'userC@example.com',
+            'password'=>bcrypt('Aa123456'),
+            'role'=>'user',
+            'permissions'=>['insert','delete']
+        ]);
+
+Gate lendo as permissões 
+
+ Gate::define('user_can_insert', function (User $user) {
+
+            //nessa gate eu uso a função in array para buscar 
+            //se existe a plavra insert dentro dele
+            //mas quando o meu usuario faz a reuisição ele não chega
+            //como um array e sim como um json 
+            // por isso eu tenho que usar o json_decode()
+            //assim eu posso passar ele como paratro para a função in_array
+            // 1- ela recebe a palavra que eu quero buscar
+            // 2- o array onde eu quero buscar
+
+           return in_array('insert',json_decode($user->permissions));
+
+
+
+        });
+
 
 
 
